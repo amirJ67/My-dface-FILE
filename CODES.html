@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEFACED</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            animation: flicker 1.5s infinite alternate;
+        }
+        h1 {
+            font-size: 4rem;
+            color: #43e8d5;
+            text-shadow: 0 0 10px #43e8d5, 0 0 20px #43e8d5, 0 0 40px #43e8d5, 0 0 80px #43e8d5;
+            animation: neon-glow 1.5s infinite alternate;
+        }
+        h1 span {
+            color: #43e8d5;
+            text-shadow: 0 0 10px #43e8d5, 0 0 20px #43e8d5, 0 0 40px #43e8d5, 0 0 80px #43e8d5;
+            animation: neon-glow-hex 1.5s infinite alternate;
+        }
+        @keyframes neon-glow {
+            0%, 100% {
+                text-shadow: 0 0 10px #43e8d5, 0 0 20px #43e8d5, 0 0 40px #43e8d5, 0 0 80px #43e8d5;
+            }
+            50% {
+                text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 60px #0f0, 0 0 120px #0f0;
+            }
+        }
+        @keyframes neon-glow-hex {
+            0%, 100% {
+                text-shadow: 0 0 15px #43e8d5, 0 0 30px #43e8d5, 0 0 60px #43e8d5, 0 0 120px #43e8d5;
+            }
+            50% {
+                text-shadow: 0 0 30px #0f0, 0 0 60px #0f0, 0 0 120px #0f0, 0 0 240px #0f0;
+            }
+        }
+        .ransom {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 10px;
+            font-weight: bold;
+            animation: flicker 2s infinite;
+        }
+        .contact {
+            color: #ff3333;
+            font-size: 1.2rem;
+            margin-top: 5px;
+            font-weight: 900;
+            text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333;
+            animation: pulse 1s infinite alternate;
+            cursor: pointer;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+        .toggle-btn {
+            background-color: #ff0000; /* Red color */
+            border: none;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 30px; /* Rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        .reason {
+            display: none;
+            color: #fff;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Initial glowing green shadow */
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s ease, transform 1s ease; /* Transition with ease */
+        }
+        .copy-message {
+            display: none;
+            color: #43e8d5;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s ease, transform 1s ease; /* Transition with ease */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DEFACED BY <span>HEX NIX</span></h1>
+        <div class="ransom">Release: ₮890 | Contact: <span class="contact" onclick="copyEmail()">HEXNIX@protonmail.com</span></div>
+        <div class="copy-message" id="copyMessage">Email copied to clipboard!</div>
+        <button class="toggle-btn" onclick="toggleReason()">Why was this site defaced?</button>
+        <div class="reason">
+            <p><strong>Attention:</strong></p>
+            <p>We have previously issued a clear warning regarding the vulnerabilities in your system. Unfortunately, as no action was taken and no communication was received, we were forced to intervene. This is a direct consequence of the lack of security measures.</p>
+            <p>You were given ample time to contact us and resolve the issue, but the negligence shown has resulted in this disruption. It is not too late to take action, but the window of opportunity is rapidly closing. Address your vulnerabilities immediately, or the consequences will be irreversible.</p>
+            <p>Let this serve as a lesson for others to heed.</p>      
+        </div>
+    </div>
+    <script>
+        function toggleReason() {
+            const reason = document.querySelector('.reason');
+            reason.style.display = 'block'; // Ensure it's visible
+            setTimeout(() => {
+                reason.style.opacity = 1; // Fade in effect
+                reason.style.transform = 'translateY(0)'; // Slide up effect
+            }, 200); // Slight delay for smoother effect
+        }
+
+        function copyEmail() {
+            const email = 'HEXNIX@protonmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const message = document.getElementById('copyMessage');
+                message.style.display = 'block'; // Make the message visible
+                setTimeout(() => {
+                    message.style.opacity = 1; // Fade in effect
+                    message.style.transform = 'translateY(0)'; // Slide up effect
+                }, 200); // Slight delay for smoother effect
+                setTimeout(() => {
+                    message.style.display = 'none'; // Hide message after 2 seconds
+                }, 2000);
+            }).catch(err => console.error('Error copying email: ', err));
+        }
+    </script>
+</body>
+</html>
